@@ -10,23 +10,26 @@ export class LoginComponent implements OnInit {
   myForm:FormGroup
 
   constructor(private fb:FormBuilder) {
-    let formControls= {
-      email: new FormControl('',[
-        Validators.pattern("[a-z]+"),
+    let formControls = {
+      email : new FormControl('',[
+        Validators.required,
         Validators.minLength(2)
       ]),
-      password: new FormControl('',[
+      password : new FormControl('',[
+        Validators.required,
         Validators.minLength(2)
       ])
     }
-    this.myForm = this.fb.group(formControls)
+    this.myForm = this.fb.group(formControls);
+   }
+
+   get getEmail(){
+     return this.myForm.get("email")
+   }
+   get getPassword(){
+    return this.myForm.get("password")
   }
-  get getEmail(){
-    return this.myForm.get('email')
-  }
-  get getPassword(){
-    return this.myForm.get('password')
-  }
+  
 
   ngOnInit(): void {
   }
