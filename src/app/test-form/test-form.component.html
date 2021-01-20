@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <form [formGroup]="myForm" (ngSubmit)="save()">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div *ngIf="getEmail.touched && getEmail.invalid">
+                      <span *ngIf="getEmail.errors.required" class="text-danger">Email required</span>
+                      <span *ngIf="getEmail.errors.minlength" class="text-danger">Email must contains 2 letters at least</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                  <div *ngIf="getPassword.touched && getPassword.invalid">
+                    <span *ngIf="getPassword.errors.required" class="text-danger">Password required</span>
+                    <span *ngIf="getPassword.errors.minlength" class="text-danger">Password must contains 2 letters at least</span>
+                </div>
+                </div>
+                <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+</div>
+
+
